@@ -1,0 +1,21 @@
+version: '3.6'
+
+x-default-node: &default-node
+  image: dev.node:8
+  build:
+    context: .
+  entrypoint: /home/node/entrypoint.sh
+  volumes:
+    - ./:/app
+    - yarn_cache:/home/node/.cache
+    - netlify:/home/node/.netlify
+
+services:
+  client:
+    <<: *default-node
+    command: yarn start
+    ports:
+      - '3000:3000'
+volumes:
+  yarn_cache:
+  netlify:
