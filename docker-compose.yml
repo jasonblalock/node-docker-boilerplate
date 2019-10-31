@@ -1,7 +1,7 @@
 version: '3.7'
 
 x-default-node: &default-node
-  image: dev.node:8
+  image: dev.node:12
   build:
     context: .
   entrypoint: /home/node/entrypoint.sh
